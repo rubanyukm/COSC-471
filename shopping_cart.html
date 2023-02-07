@@ -5,7 +5,7 @@
 	<script>
 	//remove from cart
 	function del(isbn){
-		window.location.href="shopping_cart.php?delIsbn="+ isbn;
+		window.location.href="shopping_cart.html?delIsbn="+ isbn;
 	}
 	</script>
 </head>
@@ -13,17 +13,17 @@
 	<table align="center" style="border:2px solid blue;">
 		<tr>
 			<td align="center">
-				<form id="checkout" action="confirm_order.php" method="get">
+				<form id="checkout" action="confirm_order.html" method="get">
 					<input type="submit" name="checkout_submit" id="checkout_submit" value="Proceed to Checkout">
 				</form>
 			</td>
 			<td align="center">
-				<form id="new_search" action="screen2.php" method="post">
+				<form id="new_search" action="screen2.html" method="post">
 					<input type="submit" name="search" id="search" value="New Search">
 				</form>								
 			</td>
 			<td align="center">
-				<form id="exit" action="index.php" method="post">
+				<form id="exit" action="index.html" method="post">
 					<input type="submit" name="exit" id="exit" value="EXIT 3-B.com">
 				</form>					
 			</td>
