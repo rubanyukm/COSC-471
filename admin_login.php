@@ -1,9 +1,32 @@
 
+<?php 
+$user = 'root';
+$pass = 'Romania';
+$db = 'cosc471';
+
+$dbConnection = new mysqli('localhost', $user, $pass, $db) or die("Unable to connect");
+
+if(isset($_POST['login'])){
+	$adminname = $_POST['adminname'];
+	$pin = $_POST['pin'];
+	
+	$sql = "SELECT * FROM admin WHERE adminname = '$adminname' AND pin = '$pin'";
+	$result = mysqli_query($dbConnection, $sql);
+	
+	if(mysqli_num_rows($result) == 1){
+		header("Location: admin_tasks.html");
+	}
+	else{
+		echo "Incorrect adminname or pin";
+	}
+}
+?>
+
+
 <!DOCTYPE HTML>
 <head>
 <title>Admin Login</title>
 </head>
-
 <body>
 <table align="center" style="border:2px solid blue;">
 		<form action="admin_tasks.html" method="post" id="adminlogin_screen">
@@ -12,7 +35,7 @@
 				Adminname<span style="color:red">*</span>:
 			</td>
 			<td align="left">
-				<input type="text" name="adminname" id="adminname">
+				<input type="text" name="adminname" id="adminname"> 
 			</td>
 			<td align="right">
 				<input type="submit" name="login" id="login" value="Login">
@@ -34,7 +57,5 @@
 		</tr>
 	</table>
 </body>
-
-
-
 </html>
+
