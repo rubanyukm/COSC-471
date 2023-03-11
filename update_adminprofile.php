@@ -12,12 +12,12 @@ $db = 'cosc471';
 $dbConnection = new mysqli('localhost', $user, $pass, $db) or die("Unable to connect");
 
 // grab the  oldadminname and oldpin from the form and store them in variables
-$oldadminname = $_GET['oldadminname'];
-$oldpin = $_GET['oldpin'];
+$oldadminname = $_POST['oldadminname'];
+$oldpin = $_POST['oldpin'];
 
 // grab the newadminname and newpin from the form and store them in variables
-$newadminname = $_GET['newadminname'];
-$newpin = $_GET['newpin'];
+$newadminname = $_POST['newadminname'];
+$newpin = $_POST['newpin'];
 
 // create a query to update the admin table with the new adminname and pin where the old adminname and pin match
 $sql = "UPDATE admin SET adminname = '$newadminname', pin = '$newpin' WHERE adminname = '$oldadminname' AND pin = '$oldpin'";
@@ -25,7 +25,7 @@ $result = mysqli_query($dbConnection, $sql);
 
 ?>
     <table align="center" style="border:2px solid blue;">
-		<form action="update_adminprofile.php" method="get" id="adminupdate_screen">
+		<form action="update_adminprofile.php" method="post" id="adminupdate_screen">
         <tr>
 			<td align="right">
 				New Adminname<span style="color:red">*</span>:
@@ -64,7 +64,7 @@ $result = mysqli_query($dbConnection, $sql);
 				<input type="password" name="oldpin" id="oldpin">
 			</td>
 		</form>
-		<form action="index.html" method="get" id="login_screen">
+		<form action="index.html" method="post" id="login_screen">
 			<td align="right">
 				<input type="submit" name="cancel" id="cancel" value="Cancel">
 			</td>
