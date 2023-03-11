@@ -4,11 +4,16 @@
 </head>
 <body>
 <?php 
-$user = 'main';
-$pass = 'cosC471a';
+$user = 'ruben';
+$pass = 'myPasword123!a';
 $db = 'cosc471';
 
+try {
 $dbConnection = new mysqli('localhost', $user, $pass, $db) or die("Unable to connect");
+} catch (mysqli_sql_exception $e) {
+    print "Error!: " . $e->getMessage() . "<br/>";
+    die();
+}
 
 if(isset($_POST['login'])){
 	$adminname = $_POST['adminname'];
