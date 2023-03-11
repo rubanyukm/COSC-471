@@ -5,8 +5,8 @@
 </head>
 <body>
 <?php
-$user = 'sammy';
-$pass = '*DBD7F602603007C8579BB83AA7EE20F378AF1A60';
+$user = 'ruben';
+$pass = 'myPasword123!a';
 $db = 'cosc471';
 
 try {
