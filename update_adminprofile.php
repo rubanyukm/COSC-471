@@ -38,9 +38,6 @@ $result = mysqli_query($dbConnection, $sql);
 			<td align="left">
 				<input type="text" name="newadminname" id="newadminname"> 
 			</td>
-			<td align="right">
-				<input type="submit" name="login" id="login" value="Login">
-			</td>
 		</tr>
         <tr>
             <td align="right">
@@ -58,7 +55,7 @@ $result = mysqli_query($dbConnection, $sql);
 				<input type="text" name="oldadminname" id="oldadminname"> 
 			</td>
 			<td align="right">
-				<input type="submit" name="login" id="login" value="Login">
+				<input type="submit" name="submit" id="submit" value="Submit">
 			</td>
 		</tr>
 		<tr>
@@ -69,7 +66,7 @@ $result = mysqli_query($dbConnection, $sql);
 				<input type="password" name="oldpin" id="oldpin">
 			</td>
 		</form>
-		<form action="index.html" method="post" id="login_screen">
+		<form action="index.php" method="post" id="login_screen">
 			<td align="right">
 				<input type="submit" name="cancel" id="cancel" value="Cancel">
 			</td>
