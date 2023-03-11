@@ -5,13 +5,13 @@
 </head>
 <body>
 <?php
-$user = 'ruben@localhost';
+$user = 'ruben';
 $pass = 'myPasword123!a';
 $db = 'cosc471';
 
 try {
-$dbConnection = new PDO("mysql:host=localhost;dbname=$db", $user, $password);
-} catch (PDOException $e) {
+$dbConnection = new mysqli('localhost', $user, $pass, $db);
+} catch (mysqli_sql_exception $e) {
     print "Error!: " . $e->getMessage() . "<br/>";
     die();
 }
