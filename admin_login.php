@@ -4,8 +4,8 @@
 </head>
 <body>
 <?php 
-$user = 'root';
-$pass = '';
+$user = 'main';
+$pass = 'cosC471a';
 $db = 'cosc471';
 
 $dbConnection = new mysqli('localhost', $user, $pass, $db) or die("Unable to connect");
