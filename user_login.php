@@ -6,7 +6,7 @@
 <body>
 <?php
 $user = 'sammy';
-$pass = 'cosC471!a';
+$pass = '*DBD7F602603007C8579BB83AA7EE20F378AF1A60';
 $db = 'cosc471';
 
 try {
