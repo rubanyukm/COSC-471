@@ -25,7 +25,7 @@ if(isset($_GET['login'])){
 	}
 }
 ?>
-<table align="center" style="border:2px solid blue;">
+	<table align="center" style="border:2px solid blue;">
 		<form action="admin_tasks.html" method="get" id="adminlogin_screen">
 		<tr>
 			<td align="right">
