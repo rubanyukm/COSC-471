@@ -9,7 +9,12 @@ $user = 'main';
 $pass = 'cosC471a';
 $db = 'cosc471';
 
+try {
 $dbConnection = new PDO("mysql:host=localhost;dbname=$db", $user, $password);
+} catch (PDOException $e) {
+    print "Error!: " . $e->getMessage() . "<br/>";
+    die();
+}
 
 ?>
 	<table align="center" style="border:2px solid blue;">
