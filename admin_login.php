@@ -3,6 +3,28 @@
 <title>Admin Login</title>
 </head>
 <body>
+<?php 
+$user = 'root';
+$pass = '';
+$db = 'cosc471';
+
+$dbConnection = new mysqli('localhost', $user, $pass, $db) or die("Unable to connect");
+
+if(isset($_GET['login'])){
+	$adminname = $_GET['adminname'];
+	$pin = $_GET['pin'];
+	
+	$sql = "SELECT * FROM admin WHERE adminname = '$adminname' AND pin = '$pin'";
+	$result = mysqli_query($dbConnection, $sql);
+	
+	if(mysqli_num_rows($result) == 1){
+		header("Location: admin_tasks.html");
+	}
+	else{
+		echo "Incorrect adminname or pin";
+	}
+}
+?>
 <table align="center" style="border:2px solid blue;">
 		<form action="admin_tasks.html" method="get" id="adminlogin_screen">
 		<tr>
@@ -32,27 +54,5 @@
 		</tr>
 	</table>
 </body>
-<?php 
-$user = 'root';
-$pass = '';
-$db = 'cosc471';
-
-$dbConnection = new mysqli('localhost', $user, $pass, $db) or die("Unable to connect");
-
-if(isset($_GET['login'])){
-	$adminname = $_GET['adminname'];
-	$pin = $_GET['pin'];
-	
-	$sql = "SELECT * FROM admin WHERE adminname = '$adminname' AND pin = '$pin'";
-	$result = mysqli_query($dbConnection, $sql);
-	
-	if(mysqli_num_rows($result) == 1){
-		header("Location: admin_tasks.html");
-	}
-	else{
-		echo "Incorrect adminname or pin";
-	}
-}
-?>
 </html>
 
