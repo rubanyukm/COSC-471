@@ -5,7 +5,7 @@
 </head>
 <body>
 <?php
-$user = 'ruben';
+$user = 'ruben@localhost';
 $pass = 'myPasword123!a';
 $db = 'cosc471';
 
