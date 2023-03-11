@@ -4,6 +4,14 @@
 <title>User Login</title>
 </head>
 <body>
+<?php
+$user = 'main';
+$pass = 'cosC471a';
+$db = 'cosc471';
+
+$dbConnection = new PDO("mysql:host=localhost;dbname=$db", $user, $password);
+
+?>
 	<table align="center" style="border:2px solid blue;">
 		<form action="screen2.html" method="post" id="login_screen">
 		<tr>
