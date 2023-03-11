@@ -38,7 +38,7 @@ $dbConnection = new mysqli('localhost', $user, $pass, $db);
 				<input type="password" name="pin" id="pin">
 			</td>
 			</form>
-			<form action="index.html" method="post" id="login_screen">
+			<form action="index.php" method="post" id="login_screen">
 			<td align="right">
 				<input type="submit" name="cancel" id="cancel" value="Cancel">
 			</td>

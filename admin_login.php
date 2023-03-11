@@ -23,7 +23,7 @@ if(isset($_POST['login'])){
 	$result = mysqli_query($dbConnection, $sql);
 	
 	if(mysqli_num_rows($result) == 1){
-		header("Location: admin_tasks.html");
+		header("Location: admin_tasks.php");
 	}
 	else{
 		echo "Incorrect adminname or pin";
@@ -31,7 +31,7 @@ if(isset($_POST['login'])){
 }
 ?>
 	<table align="center" style="border:2px solid blue;">
-		<form action="admin_tasks.html" method="post" id="adminlogin_screen">
+		<form action="admin_tasks.php" method="post" id="adminlogin_screen">
 		<tr>
 			<td align="right">
 				Adminname<span style="color:red">*</span>:
@@ -51,7 +51,7 @@ if(isset($_POST['login'])){
 				<input type="password" name="pin" id="pin">
 			</td>
 			</form>
-			<form action="index.html" method="post" id="login_screen">
+			<form action="index.php" method="post" id="login_screen">
 			<td align="right">
 				<input type="submit" name="cancel" id="cancel" value="Cancel">
 			</td>
