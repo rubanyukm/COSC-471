@@ -4,8 +4,8 @@
 </head>
 <body>
 <?php 
-$user = 'ruben';
-$pass = 'myPasword123!a';
+$user = 'root';
+$pass = 'rootUser4235!a';
 $db = 'cosc471';
 
 try {
@@ -26,6 +26,8 @@ if(isset($_POST['login'])){
 		header("Location: admin_tasks.php");
 	}
 	else{
+		//echo a JS alert
+
 		echo "Incorrect adminname or pin";
 	}
 }
