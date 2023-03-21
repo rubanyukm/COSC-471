@@ -28,7 +28,8 @@ if(isset($_POST['login'])){
 	}
 	// if the adminname and pin do not match, display an error message
 	else{
-		echo "Invalid adminname or pin";
+		// echo a JS alert
+		echo "<script type='text/javascript'>alert('Adminname and PIN do not match.');</script>";
 	}
 }
 ?>
