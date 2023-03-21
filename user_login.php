@@ -5,8 +5,8 @@
 </head>
 <body>
 <?php
-$user = 'Ruben';
-$pass = 'myPassword123!a';
+$user = 'admin1';
+$pass = 'Admin1Pass4235!a';
 $db = 'cosc471';
 
 try {
