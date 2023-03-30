@@ -11,6 +11,22 @@ create table books(
     
     primary key (ISBN)
 )
+
+create table customer(
+    username    text,
+    pin         text,
+    fname       text,
+    lname       text,
+    custaddress text,
+    city        text,
+    custState   char(2),
+    cardType    text,
+    cardNo      int,
+
+    primary key(username)
+
+)
+
 create table reviews(
     reviewID    int,
     reviewText  text,
@@ -33,12 +49,3 @@ create table orders(
 
 )
 
-create table customer(
-    username    text,
-    pin         text,
-    fname       text,
-    lname       text,
-    custaddress text,
-    city        text,        
-
-)
