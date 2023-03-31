@@ -1,5 +1,4 @@
 
-<!DOCTYPE HTML>
 <head>
 	<title>UPDATE ADMIN</title>
 </head>
