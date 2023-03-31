@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$result = $dbConnection->query($sql);
 	if ($result->num_rows > 0) {
 		echo "<script type='text/javascript'>alert('Login successful.');</script>";
-		header("Location: screen2.html");
+		header("Location: screen2.php");
 	} else {
 		echo "<script type='text/javascript'>alert('Login failed.');</script>";
 	}
@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 ?>
 	<table align="center" style="border:2px solid blue;">
-		<form action="screen2.html" method="post" id="login_screen">
+		<form action="user_login.php" method="post" id="login_screen">
 		<tr>
 			<td align="right">
 				Username<span style="color:red">*</span>:
