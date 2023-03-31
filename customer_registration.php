@@ -187,9 +187,9 @@ if (isset($_POST['register_submit'])) {
 			<td align="left">
 				<select id="state" name="state">
 				<option selected disabled>select a state</option>
-				<option>Michigan</option>
-				<option>California</option>
-				<option>Tennessee</option>
+				<option>MI</option>
+				<option>CA</option>
+				<option>TN</option>
 				</select>
 			</td>
 			<td align="right">
