@@ -15,20 +15,31 @@ $dbConnection = new mysqli('localhost', $user, $pass, $db) or die("Unable to con
     die();
 }
 
-$username = $_POST['username'];
-$pin = $_POST['pin'];
-$retype_pin = $_POST['retype_pin'];
-$firstname = $_POST['firstname'];
-$lastname = $_POST['lastname'];
-$address = $_POST['address'];
-$city = $_POST['city'];
-$state = $_POST['state'];
-$cardType = $_POST['credit_card'];
-$cardNumber = $_POST['card_number'];
+$username = "";
+$pin = "";
+$retype_pin = "";
+$firstname = "";
+$lastname = "";
+$address = "";
+$city = "";
+$state = "";
+$cardType = "";
+$cardNumber = "";
 
-if (isset($_POST['register_submit'])) {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    /*
+    $username = $_POST['username'];
+    $pin = $_POST['pin'];
+    $retype_pin = $_POST['retype_pin'];
+    $firstname = $_POST['firstname'];
+    $lastname = $_POST['lastname'];
+    $address = $_POST['address'];
+    $city = $_POST['city'];
+    $state = $_POST['state'];
+    $cardType = $_POST['credit_card'];
+    $cardNumber = $_POST['card_number'];
+
+    
     //if statements to check if fields are empty
     if (empty($username)) {
         echo "<script type='text/javascript'>alert('Username is required.');</script>";
@@ -94,7 +105,7 @@ if (isset($_POST['register_submit'])) {
     if (strlen($username) > 20) {
         echo "<script type='text/javascript'>alert('Username must be less than 20 characters.');</script>";
     }
-    */
+    
     //check if username already exists
 	$sql = "SELECT * FROM customer WHERE username = '$username'";
 	$result = mysqli_query($dbConnection, $sql);
