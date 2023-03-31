@@ -1,64 +1,9 @@
 <!-- UI: Prithviraj Narahari, php code: Alexander Martens -->
+<!DOCTYPE HTML>
 <head>
 <title> CUSTOMER REGISTRATION </title>
 </head>
 <body>
-<?php
-$user = 'admin1';
-$pass = 'Admin1Pass4235!a';
-$db = 'cosc471';
-
-try {
-$dbConnection = new mysqli('localhost', $user, $pass, $db) or die("Unable to connect");
-} catch (mysqli_sql_exception $e) {
-    print "Error!: " . $e->getMessage() . "<br/>";
-    die();
-}
-
-$username = $_POST['username'];
-$pin = $_POST['pin'];
-$retype_pin = $_POST['retype_pin'];
-$firstname = $_POST['firstname'];
-$lastname = $_POST['lastname'];
-$address = $_POST['address'];
-$city = $_POST['city'];
-$state = $_POST['state'];
-$cardType = $_POST['credit_card'];
-$cardNumber = $_POST['card_number'];
-
-if (isset($_POST['register_submit'])) {
-
-	if (empty($username) || empty($pin) || empty($retype_pin) || empty($firstname) || empty($lastname) || empty($address) || empty($city) || empty($state) || empty($cardType) || empty($cardNumber)) {
-		echo "<script type='text/javascript'>alert('Please fill out all required fields.');</script>";
-		//header("Location: customer_registration.php");
-	}
-
-	$sql = "SELECT * FROM customer WHERE username = '$username'";
-	$result = mysqli_query($dbConnection, $sql);
-
-	if(mysqli_num_rows($result) == 0)
-	{
-		if($pin == $retype_pin)
-		{
-			$sql = "INSERT INTO customer (username, pin, firstname, lastname, address, city, state, cardType, cardNumber) VALUES ('$username', '$pin', '$firstname', '$lastname', '$address', '$city', '$state', '$cardType', '$cardNumber')";
-			$result = mysqli_query($dbConnection, $sql);
-			echo "<script type='text/javascript'>alert('Registration successful.');</script>";
-			header("Location: index.php");
-		}
-		else
-		{
-			echo "<script type='text/javascript'>alert('PINs do not match.');</script>";
-		}
-	}
-	else
-	{
-		echo "<script type='text/javascript'>alert('Username already exists.');</script>";
-	}
-	
-}
-	
-?>
-
 	<table align="center" style="border:2px solid blue;">
 		<tr>
 			<form id="register" action="customer_registration.php" method="post">
