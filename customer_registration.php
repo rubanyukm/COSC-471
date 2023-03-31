@@ -38,7 +38,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $state = $_POST['state'];
     $cardType = $_POST['credit_card'];
     $cardNumber = $_POST['card_number'];
-
     /*
     //if statements to check if fields are empty
     if (empty($username)) {
@@ -107,29 +106,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     */
     if (!empty($username) && !empty($pin) && !empty($retype_pin) && !empty($firstname) && !empty($lastname) && !empty($address) && !empty($city) && !empty($state) && !empty($cardType) && !empty($cardNumber)) {
-        //check if username already exists
-        $sql = "SELECT * FROM customer WHERE username = '$username'";
-        $result = mysqli_query($dbConnection, $sql);
-
-        //if username does not exist, check if PINs match
-        if(mysqli_num_rows($result) == 0)
-        {
-            //if pins match, insert into database
-            if($pin == $retype_pin)
-            {
+        //check if PINs match  
+        if($pin == $retype_pin) {
+            $sql = "SELECT * FROM customer WHERE username = '$username'";
+            $result = mysqli_query($dbConnection, $sql);
+            //check if the unsername already exists
+            if(mysqli_num_rows($result) > 0) {
+                echo "<script type='text/javascript'>alert('Username already exists.');</script>";
+            }
+            else {
                 $sql = "INSERT INTO customer (username, pin, firstname, lastname, address, city, state, cardType, cardNumber) VALUES ('$username', '$pin', '$firstname', '$lastname', '$address', '$city', '$state', '$cardType', '$cardNumber')";
                 $result = mysqli_query($dbConnection, $sql);
                 echo "<script type='text/javascript'>alert('Registration successful.');</script>";
                 header("Location: index.php");
             }
-            else
-            {
-                echo "<script type='text/javascript'>alert('PINs do not match.');</script>";
-            }
         }
-        else
-        {
-            echo "<script type='text/javascript'>alert('Username already exists.');</script>";
+        else {
+            echo "<script type='text/javascript'>alert('PINs do not match.');</script>";
         }
 	
     }
