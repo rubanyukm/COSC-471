@@ -15,9 +15,20 @@ $dbConnection = new mysqli('localhost', $user, $pass, $db) or die("Unable to con
     die();
 }
 
+$username = $_POST['username'];
+$pin = $_POST['pin'];
+$retype_pin = $_POST['retype_pin'];
+$firstname = $_POST['firstname'];
+$lastname = $_POST['lastname'];
+$address = $_POST['address'];
+$city = $_POST['city'];
+$state = $_POST['state'];
+$cardType = $_POST['credit_card'];
+$cardNumber = $_POST['card_number'];
+
 if (isset($_POST['register_submit'])) {
 
-	$username = $_POST['username'];
+	/*$username = $_POST['username'];
 	$pin = $_POST['pin'];
 	$retype_pin = $_POST['retype_pin'];
 	$firstname = $_POST['firstname'];
@@ -26,10 +37,11 @@ if (isset($_POST['register_submit'])) {
 	$city = $_POST['city'];
 	$state = $_POST['state'];
 	$cardType = $_POST['credit_card'];
-	$cardNumber = $_POST['card_number'];
+	$cardNumber = $_POST['card_number'];*/
 
 	if (empty($username) || empty($pin) || empty($retype_pin) || empty($firstname) || empty($lastname) || empty($address) || empty($city) || empty($state) || empty($cardType) || empty($cardNumber)) {
 		echo "<script type='text/javascript'>alert('All fields are rquired.');</script>";
+		header("Location: customer_registration.php")
 	}
 
 	$sql = "SELECT * FROM customer WHERE username = '$username'";
