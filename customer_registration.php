@@ -30,6 +30,17 @@ if (isset($_POST['register_submit'])) {
 
 	if (empty($username) || empty($pin) || empty($retype_pin) || empty($firstname) || empty($lastname) || empty($address) || empty($city) || empty($state) || empty($cardType) || empty($cardNumber)) {
 		echo "<script type='text/javascript'>alert('Please fill out all required fields.');</script>";
+        //set dummy values for the fields 
+        $username = "dummy";
+        $pin = "123";
+        $retype_pin = "123";
+        $firstname = "dummy";
+        $lastname = "dummy";
+        $address = "dummy";
+        $city = "dummy";
+        $state = "dummy";
+        $cardType = "VISA";
+        $cardNumber = "123";
 		//header("Location: customer_registration.php");
 	}
 
