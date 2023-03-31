@@ -28,6 +28,7 @@ $cardNumber = $_POST['card_number'];
 
 if (isset($_POST['register_submit'])) {
 
+    /*
     //if statements to check if fields are empty
     if (empty($username)) {
         echo "<script type='text/javascript'>alert('Username is required.');</script>";
@@ -93,7 +94,7 @@ if (isset($_POST['register_submit'])) {
     if (strlen($username) > 20) {
         echo "<script type='text/javascript'>alert('Username must be less than 20 characters.');</script>";
     }
-
+    */
     //check if username already exists
 	$sql = "SELECT * FROM customer WHERE username = '$username'";
 	$result = mysqli_query($dbConnection, $sql);
