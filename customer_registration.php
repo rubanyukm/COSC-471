@@ -40,6 +40,7 @@ if (isset($_POST['register_submit'])) {
 	$cardNumber = $_POST['card_number'];*/
 
 	if (empty($username) || empty($pin) || empty($retype_pin) || empty($firstname) || empty($lastname) || empty($address) || empty($city) || empty($state) || empty($cardType) || empty($cardNumber)) {
+		header("Location: customer_registration.php");
 		echo "<script type='text/javascript'>alert('All fields are rquired.');</script>";
 	}
 
