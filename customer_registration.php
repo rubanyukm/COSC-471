@@ -28,27 +28,80 @@ $cardNumber = $_POST['card_number'];
 
 if (isset($_POST['register_submit'])) {
 
-	if (empty($username) || empty($pin) || empty($retype_pin) || empty($firstname) || empty($lastname) || empty($address) || empty($city) || empty($state) || empty($cardType) || empty($cardNumber)) {
-		echo "<script type='text/javascript'>alert('Please fill out all required fields.');</script>";
-        //set dummy values for the fields 
-        $username = "dummy";
-        $pin = "123";
-        $retype_pin = "123";
-        $firstname = "dummy";
-        $lastname = "dummy";
-        $address = "dummy";
-        $city = "dummy";
-        $state = "dummy";
-        $cardType = "VISA";
-        $cardNumber = "123";
-		//header("Location: customer_registration.php");
-	}
+    //if statements to check if fields are empty
+    if (empty($username)) {
+        echo "<script type='text/javascript'>alert('Username is required.');</script>";
+    }
+    if (empty($pin)) {
+        echo "<script type='text/javascript'>alert('PIN is required.');</script>";
+    }
+    if (empty($retype_pin)) {
+        echo "<script type='text/javascript'>alert('Retype PIN is required.');</script>";
+    }
+    if (empty($firstname)) {
+        echo "<script type='text/javascript'>alert('First name is required.');</script>";
+    }
+    if (empty($lastname)) {
+        echo "<script type='text/javascript'>alert('Last name is required.');</script>";
+    }
+    if (empty($address)) {
+        echo "<script type='text/javascript'>alert('Address is required.');</script>";
+    }
+    if (empty($city)) {
+        echo "<script type='text/javascript'>alert('City is required.');</script>";
+    }
+    if (empty($state)) {
+        echo "<script type='text/javascript'>alert('State is required.');</script>";
+    }
+    if (empty($cardType)) {
+        echo "<script type='text/javascript'>alert('Credit card type is required.');</script>";
+    }
+    if (empty($cardNumber)) {
+        echo "<script type='text/javascript'>alert('Credit card number is required.');</script>";
+    }
+    //if statements to check if fields are valid
+    if (!preg_match("/^[a-zA-Z ]*$/",$firstname)) {
+        echo "<script type='text/javascript'>alert('First name must contain only letters.');</script>";
+    }
+    if (!preg_match("/^[a-zA-Z ]*$/",$lastname)) {
+        echo "<script type='text/javascript'>alert('Last name must contain only letters.');</script>";
+    }
+    if (!preg_match("/^[a-zA-Z ]*$/",$city)) {
+        echo "<script type='text/javascript'>alert('City must contain only letters.');</script>";
+    }
+    if (!preg_match("/^[a-zA-Z ]*$/",$state)) {
+        echo "<script type='text/javascript'>alert('State must contain only letters.');</script>";
+    }
+    if (!preg_match("/^[0-9]*$/",$cardNumber)) {
+        echo "<script type='text/javascript'>alert('Credit card number must contain only numbers.');</script>";
+    }
+    if (!preg_match("/^[0-9]*$/",$pin)) {
+        echo "<script type='text/javascript'>alert('PIN must contain only numbers.');</script>";
+    }
+    if (!preg_match("/^[0-9]*$/",$retype_pin)) {
+        echo "<script type='text/javascript'>alert('Retype PIN must contain only numbers.');</script>";
+    }
+    if (strlen($pin) != 4) {
+        echo "<script type='text/javascript'>alert('PIN must be 4 digits.');</script>";
+    }
+    if (strlen($retype_pin) != 4) {
+        echo "<script type='text/javascript'>alert('Retype PIN must be 4 digits.');</script>";
+    }
+    if (strlen($cardNumber) != 16) {
+        echo "<script type='text/javascript'>alert('Credit card number must be 16 digits.');</script>";
+    }
+    if (strlen($username) > 20) {
+        echo "<script type='text/javascript'>alert('Username must be less than 20 characters.');</script>";
+    }
 
+    //check if username already exists
 	$sql = "SELECT * FROM customer WHERE username = '$username'";
 	$result = mysqli_query($dbConnection, $sql);
 
+    //if username does not exist, check if PINs match
 	if(mysqli_num_rows($result) == 0)
 	{
+        //if pins match, insert into database
 		if($pin == $retype_pin)
 		{
 			$sql = "INSERT INTO customer (username, pin, firstname, lastname, address, city, state, cardType, cardNumber) VALUES ('$username', '$pin', '$firstname', '$lastname', '$address', '$city', '$state', '$cardType', '$cardNumber')";
