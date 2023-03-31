@@ -1,4 +1,4 @@
-<script>alert('Please enter all values')</script><!-- UI: Prithviraj Narahari, php code: Alexander Martens -->
+<!-- UI: Prithviraj Narahari, php code: Alexander Martens -->
 <head>
 <title> CUSTOMER REGISTRATION </title>
 </head>
@@ -26,28 +26,35 @@ $state = $_POST['state'];
 $cardType = $_POST['credit_card'];
 $cardNumber = $_POST['card_number'];
 
-$sql = "SELECT * FROM customer WHERE username = '$username'";
-$result = mysqli_query($dbConnection, $sql);
+if (isset($_POST['submit'])) {
 
-if(mysqli_num_rows($result) == 0)
-{
-	if($pin == $retype_pin)
+	if (empty($username) || empty($pin) || empty($retype_pin) || empty($firstname) || empty($lastname) || empty($address) || empty($city) || empty($state) || empty($cardType) || empty($cardNumber)) {
+		echo "<script type='text/javascript'>alert('All fields are rquired.');</script>";
+	}
+
+	$sql = "SELECT * FROM customer WHERE username = '$username'";
+	$result = mysqli_query($dbConnection, $sql);
+
+	if(mysqli_num_rows($result) == 0)
 	{
-		$sql = "INSERT INTO customer (username, pin, firstname, lastname, address, city, state, cardType, cardNumber) VALUES ('$username', '$pin', '$firstname', '$lastname', '$address', '$city', '$state', '$cardType', '$cardNumber')";
-		$result = mysqli_query($dbConnection, $sql);
-		echo "<script type='text/javascript'>alert('Registration successful.');</script>";
-		header("Location: index.php");
+		if($pin == $retype_pin)
+		{
+			$sql = "INSERT INTO customer (username, pin, firstname, lastname, address, city, state, cardType, cardNumber) VALUES ('$username', '$pin', '$firstname', '$lastname', '$address', '$city', '$state', '$cardType', '$cardNumber')";
+			$result = mysqli_query($dbConnection, $sql);
+			echo "<script type='text/javascript'>alert('Registration successful.');</script>";
+			header("Location: index.php");
+		}
+		else
+		{
+			echo "<script type='text/javascript'>alert('PINs do not match.');</script>";
+		}
 	}
 	else
 	{
-		echo "<script type='text/javascript'>alert('PINs do not match.');</script>";
+		echo "<script type='text/javascript'>alert('Username already exists.');</script>";
 	}
+	
 }
-else
-{
-	echo "<script type='text/javascript'>alert('Username already exists.');</script>";
-}
-
 	
 ?>
 
@@ -155,7 +162,7 @@ else
 				<input type="submit" id="register_submit" name="register_submit" value="Register">
 			</td>
 			</form>
-			<form id="no_registration" action="index.html" method="post">
+			<form id="no_registration" action="index.php" method="post">
 			<td colspan="2" align="center">
 				<input type="submit" id="donotregister" name="donotregister" value="Don't Register">
 			</td>
