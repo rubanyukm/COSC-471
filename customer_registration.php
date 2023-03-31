@@ -3,6 +3,12 @@
 <title> CUSTOMER REGISTRATION </title>
 </head>
 <body>
+	<?php
+
+	echo "<h1 align='center'>Testing</h1>";
+	
+	?>
+
 	<table align="center" style="border:2px solid blue;">
 		<tr>
 			<form id="register" action="" method="post">
