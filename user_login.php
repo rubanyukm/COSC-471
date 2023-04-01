@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$result = $dbConnection->query($sql);
 	if ($result->num_rows > 0) {
 		echo "<script type='text/javascript'>alert('Login successful.');</script>";
-		header("Location: screen2.php");
+		header("Location: screen2.html");
 	} else {
 		echo "<script type='text/javascript'>alert('Login failed.');</script>";
 	}

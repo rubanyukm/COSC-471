@@ -1,44 +1,9 @@
-
 <!-- Figure 2: Search Screen by Alexander -->
 <html>
 <head>
 	<title>SEARCH - 3-B.com</title>
 </head>
 <body>
-<?php
-session_start();
-
-$user = 'admin1';
-$pass = 'Admin1Pass4235!a';
-$db = 'cosc471';
-
-try {
-$dbConnection = new mysqli('localhost', $user, $pass, $db);
-} catch (mysqli_sql_exception $e) {
-    print "Error!: " . $e->getMessage() . "<br/>";
-    die();
-}
-
-$searchFor = "";
-
-if ($_SERVER["REQUEST_METHOD"] == "GET") {
-
-	$searchFor = $_GET['searchfor'];
-	$searchOn = $_GET['searchon'];
-	$category = $_GET['category'];
-
-}
-
-if (empty($searchFor)) {
-	echo "<script type='text/javascript'>alert('Search field is empty.');</script>";
-}
-
-$_SESSION['searchFor'] = $searchFor;
-$_SESSION['searchOn'] = $searchOn;
-$_SESSION['category'] = $category;
-
-
-?>
 	<table align="center" style="border:1px solid blue;">
 		<tr>
 			<td>Search for: </td>
@@ -49,7 +14,7 @@ $_SESSION['category'] = $category;
 		<tr>
 			<td>Search In: </td>
 				<td>
-					<select name="searchon" multiple>
+					<select name="searchon[]" multiple>
 						<option value="anywhere" selected='selected'>Keyword anywhere</option>
 						<option value="title">Title</option>
 						<option value="author">Author</option>

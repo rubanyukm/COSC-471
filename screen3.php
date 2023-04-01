@@ -3,18 +3,28 @@
 <html>
 <head>
 	<title> Search Result - 3-B.com </title>
-	<script>
-	//redirect to reviews page
-	function review(isbn, title){
-		window.location.href="screen4.html?isbn="+ isbn + "&title=" + title;
-	}
-	//add to cart
-	function cart(isbn, searchfor, searchon, category){
-		window.location.href="screen3.html?cartisbn="+ isbn + "&searchfor=" + searchfor + "&searchon=" + searchon + "&category=" + category;
-	}
-	</script>
 </head>
 <body>
+<?php
+session_start();
+
+$user = 'admin1';
+$pass = 'Admin1Pass4235!a';
+$db = 'cosc471';
+
+try {
+$dbConnection = new mysqli('localhost', $user, $pass, $db);
+} catch (mysqli_sql_exception $e) {
+    print "Error!: " . $e->getMessage() . "<br/>";
+    die();
+}
+
+//pull the variables from the session and display the search results
+$searchFor = $_SESSION['searchFor'];
+$searchOn = $_SESSION['searchOn'];
+$category = $_SESSION['category'];
+
+?>
 	<table align="center" style="border:1px solid blue;">
 		<tr>
 			<td align="left">
