@@ -118,7 +118,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $sql = "INSERT INTO customer (username, pin, firstname, lastname, address, city, state, cardType, cardNumber) VALUES ('$username', '$pin', '$firstname', '$lastname', '$address', '$city', '$state', '$cardType', '$cardNumber')";
                 $result = mysqli_query($dbConnection, $sql);
                 echo "<script type='text/javascript'>alert('Registration successful.');</script>";
-                header("Location: index.php");
+                
             }
         }
         else {
