@@ -234,7 +234,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		</tr>
 		<tr>
 			<td colspan="2" align="center"> 
+            <form id="register" action="register.php" method="post">
 				<input type="submit" id="register_submit" name="register_submit" value="Register">
+            </form>
 			</td>
 			</form>
 			<form id="no_registration" action="index.php" method="post">
