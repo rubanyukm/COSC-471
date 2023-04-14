@@ -1,4 +1,7 @@
+<?php
+session_start();
 
+?>
 <!DOCTYPE HTML>
 <head>
 	<title>ADMIN TASKS</title>
@@ -12,13 +15,14 @@
 			</td>
 			</form>
 		</tr>
-		<tr>
+		<!--not required-->
+		<!-- <tr>
 			<form action=" " method="post" id="orders">
 			<td align="center">
 				<input type="submit" name="place_orders" id="place_orders" value="Place Orders" style="width:200px;">
 			</td>
 			</form>
-		</tr>
+		</tr> -->
 		<tr>
 			<form action="reports.php" method="post" id="reports">
 			<td align="center">
@@ -26,13 +30,14 @@
 			</td>
 			</form>
 		</tr>
-		<tr>
+		<!--not required-->
+		<!--<tr>
 			<form action="update_adminprofile.php" method="post" id="update">
 			<td align="center">
 				<input type="submit" name="update_profile" id="update_profile" value="Update Admin Profile" style="width:200px;">
 			</td>
 			</form>
-		</tr>
+		</tr>-->
 		<tr>
 		<td>&nbsp</td>
 		</tr>

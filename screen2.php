@@ -20,17 +20,20 @@ $dbConnection = new mysqli('localhost', $user, $pass, $db);
 }
 
 $searchFor = "";
+$searchOn = "";
+$category = "";
 
-if ($_SERVER["REQUEST_METHOD"] == "GET") {
-
+if (isset($_GET['search-submit'])) {
 	$searchFor = $_GET['searchfor'];
 	$searchOn = $_GET['searchon'];
 	$category = $_GET['category'];
-
-}
-
-if (empty($searchFor)) {
-	echo "<script type='text/javascript'>alert('Search field is empty.');</script>";
+	
+	if (empty($searchFor)) {
+		echo "<script type='text/javascript'>alert('Search field is empty.');</script>";
+	} 
+	else {
+		header("Location: screen3.php");
+	}
 }
 
 $_SESSION['searchFor'] = $searchFor;
@@ -42,9 +45,9 @@ $_SESSION['category'] = $category;
 	<table align="center" style="border:1px solid blue;">
 		<tr>
 			<td>Search for: </td>
-			<form action="screen3.php" method="get">
+			<form action="screen2.php" method="get">
 				<td><input name="searchfor" /></td>
-				<td><input type="submit" name="search" value="Search" /></td>
+				<td><input type="submit" name="search-submit" value="Search" /></td>
 		</tr>
 		<tr>
 			<td>Search In: </td>
@@ -64,8 +67,9 @@ $_SESSION['category'] = $category;
 				<td><select name="category">
 						<option value='all' selected='selected'>All Categories</option>
 						<option value='1'>Fantasy</option><option value='2'>Adventure</option><option value='3'>Fiction</option><option value='4'>Horror</option>				</select></td>
-				</form>
-	<form action="index.php" method="post">	
+			</form>
+
+		<form action="index.php" method="post">	
 				<td><input type="submit" name="exit" value="EXIT 3-B.com" /></td>
 			</form>
 		</tr>

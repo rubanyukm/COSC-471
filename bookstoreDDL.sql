@@ -8,6 +8,8 @@ create table books(
     title       text,
     Author      text,
     publisher   text,
+    category    text,
+    price      numeric(5,2),
     primary key (ISBN)
 )
 
@@ -27,9 +29,9 @@ create table customer(
 create table reviews(
     reviewID    int,
     reviewText  text,
-    ISBN        numeric(13,0),
+    ISBN     numeric(13,0),
     primary key(reviewID),
-    foreign key( ISBN) references books(ISBN)
+    foreign key(ISBN) references books(ISBN)
 )
 
 create table orders(
@@ -37,6 +39,8 @@ create table orders(
     customerUsername  varchar(255),
     ISBN    numeric(13,0),
     quantity    int,
+    orderDate  date,
+    totalPrice  numeric(5,2),
     primary key(orderID,ISBN),
     foreign key(ISBN) references books(ISBN),
     foreign key(customerUsername) references customer(username)

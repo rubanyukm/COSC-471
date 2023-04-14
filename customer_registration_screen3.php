@@ -6,6 +6,13 @@
 <?php
 session_start();
 
+//pull the books and quantity from the session
+$cart  = array();
+$cart = $_SESSION['cart'];
+
+//display the cart for debug
+print_r($cart);
+
 $user = 'admin1';
 $pass = 'Admin1Pass4235!a';
 $db = 'cosc471';
@@ -96,13 +103,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $sql = "INSERT INTO customer (username, pin, fname, lname, custaddress, city, custState, cardType, cardNo) VALUES ('$username', '$pin', '$firstname', '$lastname', '$address', '$city', '$state', '$cardType', '$cardNumber')";
                 $result = mysqli_query($dbConnection, $sql);
 				$isUser = true;
-				//add isUser to session
 				$_SESSION['isUser'] = $isUser;
 				$_SESSION['cardType'] = $cardType;
 				$_SESSION['cardNumber'] = $cardNumber;
 				$_SESSION['username'] = $username;
                 echo "<script type='text/javascript'>alert('Registration successful.');</script>";
-                header("Location: screen2.php");
+                header("Location: confirm_order.php");
             }
         }
         else {

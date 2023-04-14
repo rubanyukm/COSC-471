@@ -5,6 +5,8 @@
 </head>
 <body>
 <?php
+session_start();
+
 $user = 'admin1';
 $pass = 'Admin1Pass4235!a';
 $db = 'cosc471';
@@ -18,6 +20,8 @@ $dbConnection = new mysqli('localhost', $user, $pass, $db);
 
 $username = "";
 $pin = "";
+
+$isUser = $_SESSION['isUser'];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$username = $_POST['username'];
@@ -35,8 +39,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$sql = "SELECT * FROM customer WHERE username = '$username' AND pin = '$pin'";
 	$result = $dbConnection->query($sql);
 	if ($result->num_rows > 0) {
+		$isUser = true;
+		$_SESSION['username'] = $username;
+		//put isUser back in session
+		$_SESSION['isUser'] = $isUser;
+		//grab the card type and cardnumber from the database and put them in session
+		$sql = "SELECT cardType, cardNo FROM customer WHERE username = '$username'";
+		$result = $dbConnection->query($sql);
+		if ($result->num_rows > 0) {
+			while ($row = $result->fetch_assoc()) {
+				$_SESSION['card_type'] = $row['card_type'];
+				$_SESSION['card_number'] = $row['card_number'];
+			}
+		}
 		echo "<script type='text/javascript'>alert('Login successful.');</script>";
-		header("Location: screen2.html");
+		header("Location: screen2.php");
 	} else {
 		echo "<script type='text/javascript'>alert('Login failed.');</script>";
 	}
