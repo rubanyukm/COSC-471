@@ -10,9 +10,6 @@ session_start();
 $cart  = array();
 $cart = $_SESSION['cart'];
 
-//display the cart for debug
-print_r($cart);
-
 $user = 'admin1';
 $pass = 'Admin1Pass4235!a';
 $db = 'cosc471';
@@ -124,7 +121,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 	
 	<table align="center" style="border:2px solid blue;">
-	<form id="register" action="customer_registration.php" method="post">
+	<form id="register" action="customer_registration_screen3.php" method="post">
 		<tr>
 			<td align="right">
 				Username<span style="color:red">*</span>:
