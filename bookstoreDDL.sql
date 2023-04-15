@@ -11,7 +11,7 @@ create table books(
     category    text,
     price      numeric(5,2),
     primary key (ISBN)
-)
+);
 
 create table customer(
     username    varchar(255),
@@ -22,9 +22,9 @@ create table customer(
     city        text,
     custState   char(2),
     cardType    text,
-    cardNo      int,
+    cardNo      varchar(255),
     primary key(username)
-)
+);
 
 create table reviews(
     reviewID    int,
@@ -32,7 +32,7 @@ create table reviews(
     ISBN     numeric(13,0),
     primary key(reviewID),
     foreign key(ISBN) references books(ISBN)
-)
+);
 
 create table orders(
     orderID     int,
@@ -44,5 +44,5 @@ create table orders(
     primary key(orderID,ISBN),
     foreign key(ISBN) references books(ISBN),
     foreign key(customerUsername) references customer(username)
-)
+);
 

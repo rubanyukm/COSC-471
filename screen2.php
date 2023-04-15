@@ -60,7 +60,7 @@ $_SESSION['category'] = $category;
 						<option value="isbn">ISBN</option>				
 					</select>
 				</td>
-				<td><a href="shopping_cart.html"><input type="button" name="manage" value="Manage Shopping Cart" /></a></td>
+				<td><a href="shopping_cart.php"><input type="button" name="manage" value="Manage Shopping Cart" /></a></td>
 		</tr>
 		<tr>
 			<td>Category: </td>

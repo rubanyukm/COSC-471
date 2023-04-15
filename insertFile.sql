@@ -14,3 +14,5 @@ insert into reviews values(1,"book is good",123456789123);
 insert into reviews values(2,"book is meh",123456789123);
 
 insert into orders values(12, "user1", 123453389123, 3, "2023-04-14", 29.97);
+
+insert into admin values("admin1", 12);
