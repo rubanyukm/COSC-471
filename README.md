@@ -9,7 +9,7 @@ This webapp uses a CSS and HTML frontend with a PHP backend and a MySQL DB. It w
 
 **Images**
 
-![ERD](images/ERD.png "ERD")
+![ERD](images/ERD.PNG "ERD")
 
 ER diagram for the conceptual phase of the DB.
 
